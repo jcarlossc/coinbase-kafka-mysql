@@ -8,8 +8,8 @@ class Settings(BaseSettings):
     """
     Configuração centralizada da aplicação.
 
-    Os valores podem ser fornecidos por meio de variáveis ​​de
-    ambiente ou de um arquivo `.env` local.
+    Os valores podem ser fornecidos por meio de variáveis de
+    ambiente ou de um arquivo '.env' local.
     """
 
     # ----------------------------------
