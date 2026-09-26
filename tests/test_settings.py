@@ -30,7 +30,7 @@ def test_mysql_url_is_generated_correctly() -> None:
 def test_settings_can_be_loaded_from_environment(
     monkeypatch,
 ) -> None:
-    """Deve carregar valores de configuração a partir de variáveis ​​de ambiente."""
+    """Deve carregar valores de configuração a partir de variáveis de ambiente."""
     monkeypatch.setenv(
         "KAFKA_BOOTSTRAP_SERVERS",
         "kafka-server:9092",
