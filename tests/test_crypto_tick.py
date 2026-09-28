@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
@@ -31,7 +31,7 @@ def test_crypto_tick_from_valid_payload() -> None:
 
     assert tick.product_id == "BTC-USD"
     assert tick.sequence == 136498491469
-    assert tick.price == Decimal("85799")
+    assert tick.price == Decimal(85799)
     assert tick.best_bid == Decimal("85799.00")
     assert tick.best_ask == Decimal("85799.01")
     assert tick.event_time == datetime(
@@ -42,7 +42,7 @@ def test_crypto_tick_from_valid_payload() -> None:
         19,
         59,
         721730,
-        tzinfo=timezone.utc,
+        tzinfo=UTC,
     )
 
 
@@ -106,7 +106,7 @@ def test_crypto_tick_accepts_missing_optional_values() -> None:
         raw_payload="{}",
     )
 
-    assert tick.price == Decimal("85799")
+    assert tick.price == Decimal(85799)
     assert tick.open_24h is None
     assert tick.volume_24h is None
     assert tick.best_bid is None
