@@ -59,7 +59,7 @@ class CryptoTick:
         if not time_value:
             raise ValueError("O evento do ticker não possui horário.")
 
-        event_time = datetime.fromisoformat(str(time_value).replace("Z", "+00:00"))
+        event_time = datetime.fromisoformat(str(time_value))
 
         return cls(
             product_id=product_id,
