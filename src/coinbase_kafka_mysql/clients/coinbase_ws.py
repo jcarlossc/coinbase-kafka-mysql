@@ -62,8 +62,8 @@ class CoinbaseWebSocketClient:
             except KeyboardInterrupt:
                 LOGGER.info("WebSocket stream encerrado pelo usuário.")
                 return
-            except (OSError, websocket.WebSocketException, json.JSONDecodeError) as exc:
-                LOGGER.exception("Coinbase WebSocket falhou: %s", exc)
+            except (OSError, websocket.WebSocketException, json.JSONDecodeError):
+                LOGGER.exception("Coinbase WebSocket falhou.")
                 LOGGER.info(
                     "Reconectando em %s segundos.",
                     self.reconnect_delay,
