@@ -35,8 +35,8 @@ dev = [
 
 [tool.taskipy.tasks]
 pytest = "poetry run pytest ."
-covhtml = "poetry run pytest --cov=etl_python_gmail_mysql --cov-report=html"
-covcmd = "poetry run pytest --cov=etl_python_gmail_mysql --cov-report=term-missing"
+covhtml = "poetry run pytest --cov=coinbase_kafka_mysql --cov-report=html"
+covcmd = "poetry run pytest --cov=coinbase_kafka_mysql --cov-report=term-missing"
 format = "poetry run ruff format ."
 lint = "poetry run ruff check ."
 mypy = "poetry run mypy ."
