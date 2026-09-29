@@ -8,11 +8,16 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "pydantic-settings (>=2.15.0,<3.0.0)"
+    "pydantic-settings (>=2.15.0,<3.0.0)",
+    "websocket-client (>=1.9.2,<2.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "coinbase_kafka_mysql", from = "src"}]
+
+[[tool.mypy.overrides]]
+module = ["websocket.*"]
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
