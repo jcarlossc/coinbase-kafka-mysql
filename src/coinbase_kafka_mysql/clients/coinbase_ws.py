@@ -82,7 +82,7 @@ class CoinbaseWebSocketClient:
                     while True:
                         # Espera uma mensagem do servidor.
                         raw_message = ws.recv()
-                        # Espera uma mensagem do servidor.
+                        # Verifica se não recebemos conteúdo.
                         if not raw_message:
                             raise ConnectionError("A Coinbase encerrou a conexão.")
 
