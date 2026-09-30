@@ -1,0 +1,2 @@
+logs:
+  file: "logs/app.log"
