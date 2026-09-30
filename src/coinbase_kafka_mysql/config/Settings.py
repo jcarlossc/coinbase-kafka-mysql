@@ -49,8 +49,6 @@ class Settings(BaseSettings):
     # ----------------------------------
     # Configurações gerais
     # ----------------------------------
-    # Define nível de logs.
-    log_level: str = Field(default="INFO")
     # Tentativa de reconexão no caso do websocket cair.
     reconnect_delay_seconds: int = Field(default=5)
     # Define quanto tempo o Consumer Kafka espera por uma
