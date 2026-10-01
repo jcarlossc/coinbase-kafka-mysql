@@ -24,6 +24,9 @@ ignore_missing_imports = true
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.scripts]
+kafka = "coinbase_kafka_mysql.main:main"
+
 [dependency-groups]
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
@@ -36,6 +39,7 @@ dev = [
 ]
 
 [tool.taskipy.tasks]
+app = "poetry run kafka"
 pytest = "poetry run pytest ."
 covhtml = "poetry run pytest --cov=coinbase_kafka_mysql --cov-report=html"
 covcmd = "poetry run pytest --cov=coinbase_kafka_mysql --cov-report=term-missing"
