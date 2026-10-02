@@ -1,9 +1,9 @@
 import logging
 from typing import Any
 
-from coinbase_kafka.clients.coinbase_ws import CoinbaseWebSocketClient
-from coinbase_kafka.kafka.producer import KafkaProducer
-from coinbase_kafka.models.market_data import CryptoTick
+from coinbase_kafka_mysql.clients.coinbase_ws import CoinbaseWebSocketClient
+from coinbase_kafka_mysql.kafka.producer import KafkaProducer
+from coinbase_kafka_mysql.models.market_data import CryptoTick
 
 LOGGER = logging.getLogger(__name__)
 
