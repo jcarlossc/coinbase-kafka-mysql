@@ -4,8 +4,8 @@ from typing import Any
 
 from confluent_kafka import Message
 
-from coinbase_kafka.kafka.consumer import KafkaConsumer
-from coinbase_kafka.models.market_data import CryptoTick
+from coinbase_kafka_mysql.kafka.consumer import KafkaConsumer
+from coinbase_kafka_mysql.models.market_data import CryptoTick
 
 LOGGER = logging.getLogger(__name__)
 
