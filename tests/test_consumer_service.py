@@ -4,8 +4,8 @@ from unittest.mock import MagicMock
 import pytest
 from confluent_kafka import KafkaException
 
-from coinbase_kafka_mysql.services.consumer_service import ConsumerService
 from coinbase_kafka_mysql.models.market_data import CryptoTick
+from coinbase_kafka_mysql.services.consumer_service import ConsumerService
 
 
 @pytest.fixture
