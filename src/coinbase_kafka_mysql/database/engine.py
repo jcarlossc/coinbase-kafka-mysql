@@ -2,6 +2,7 @@ import logging
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
+
 from coinbase_kafka_mysql.config.Settings import Settings
 
 LOGGER = logging.getLogger(__name__)
@@ -19,11 +20,11 @@ def create_database_engine(database_url: str) -> Engine:
 
 
 def ensure_database_exists(settings: Settings) -> None:
-    host = getattr(settings, "mysql_host")
-    port = getattr(settings, "mysql_port")
-    user = getattr(settings, "mysql_user")
-    password = getattr(settings, "mysql_password")
-    database = getattr(settings, "mysql_database")
+    host = settings.mysql_host
+    port = settings.mysql_port
+    user = settings.mysql_user
+    password = settings.mysql_password
+    database = settings.mysql_database
 
     root_url = f"mysql+pymysql://{user}:{password}@{host}:{port}?charset=utf8mb4"
 
