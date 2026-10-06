@@ -30,15 +30,20 @@ def create_database_engine(database_url: str) -> Engine:
     )
 
 
-def ensure_database_exists(settings: Settings) -> None:
+def recreate_database(settings: Settings) -> None:
     """
-    Cria o banco de dados MySQL configurado, caso ele não exista.
+    Recria o banco de dados MySQL configurado.
+
+    O banco é removido caso já exista e criado novamente
+    com charset e collation configurados.
 
     Args:
-        settings: Configurações da aplicação contendo as credenciais do MySQL.
+        settings: Configurações da aplicação contendo as credenciais
+            do MySQL.
 
     Raises:
-        SQLAlchemyError: Se a conexão ou a criação do banco de dados falhar.
+        SQLAlchemyError: Se a conexão, remoção ou criação do banco
+            de dados falhar.
     """
 
     host = settings.mysql_host
@@ -49,20 +54,22 @@ def ensure_database_exists(settings: Settings) -> None:
 
     root_url = f"mysql+pymysql://{user}:{password}@{host}:{port}?charset=utf8mb4"
 
-    engine = create_engine(root_url, future=True)
+    engine = create_engine(root_url)
 
     try:
         with engine.begin() as connection:
+            connection.execute(text(f"DROP DATABASE IF EXISTS `{database}`"))
+
             connection.execute(
                 text(
-                    f"CREATE DATABASE IF NOT EXISTS `{database}` "
+                    f"CREATE DATABASE `{database}` "
                     "CHARACTER SET utf8mb4 "
                     "COLLATE utf8mb4_unicode_ci"
                 )
             )
 
         LOGGER.info(
-            "Banco de dados '%s' verificado com sucesso.",
+            "Banco de dados '%s' recriado com sucesso.",
             database,
         )
 
